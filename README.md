@@ -41,8 +41,7 @@ pip install requests
 This project relies on a local secrets file that is **ignored by Git** for security.
 
 1. Find the file `LEETCODE_SESSION_TEMPLATE.py`.
-2. Rename it to `LEETCODE_SESSION.py`.
-3. Open it and fill in your credentials:
+2. Open it and fill in your credentials:
 
 ```python
 # LEETCODE_SESSION.py
