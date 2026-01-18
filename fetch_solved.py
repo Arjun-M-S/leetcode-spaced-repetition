@@ -1,8 +1,18 @@
 import requests
 import random 
-from LEETCODE_SESSION_TEMPLATE import *
 import json 
 import time 
+import os 
+
+try: 
+    from LEETCODE_SESSION import * 
+except ImportError:
+    LEETCODE_SESSION = os.environ.get("LEETCODE_SESSION")
+    x_csrftoken = os.environ.get("x_csrftoken")
+
+
+if not LEETCODE_SESSION or not x_csrftoken: 
+    raise ValueError("Update Environment Variables")
 
 
 def fetch_solved_questions(): 

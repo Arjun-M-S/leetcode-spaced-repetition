@@ -1,13 +1,13 @@
 import smtplib
 from email.message import EmailMessage
-from LEETCODE_SESSION_TEMPLATE import *
+import os
 
-# CONFIGURATION
-# ---------------------------------------------------
-EMAIL_ADDRESS = email_address
-EMAIL_PASSWORD = APP_PASSWORD
-TARGET_EMAIL = target_email
-# ---------------------------------------------------
+try:
+    from LEETCODE_SESSION import email_address as EMAIL_ADDRESS, APP_PASSWORD as EMAIL_PASSWORD, target_email as TARGET_EMAIL
+except ImportError:
+    EMAIL_ADDRESS = os.environ.get("email_address")
+    EMAIL_PASSWORD = os.environ.get("APP_PASSWORD")
+    TARGET_EMAIL = os.environ.get("target_email")
 
 def send_daily_revision_email(questions):
     if not questions:
