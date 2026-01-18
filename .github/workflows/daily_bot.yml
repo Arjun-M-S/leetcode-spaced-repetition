@@ -1,0 +1,31 @@
+name: Daily LeetCode Revision
+
+on:
+  schedule:
+    - cron: '30 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-leetcode-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Requests
+        run: pip install requests
+
+      - name: Run Bot
+        env:
+          LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
+          x_csrftoken: ${{ secrets.x_csrftoken }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          email_address: ${{ secrets.email_address }}
+          target_email: ${{ secrets.target_email }}
+        run: python main.py
